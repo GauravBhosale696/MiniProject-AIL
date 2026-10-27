@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f5f0">
+  <title>Daymark — a week that works</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#" aria-label="Daymark home"><span class="brand-mark"><i></i><i></i><i></i><i></i></span><span>daymark</span></a>
+      <div class="side-label">YOUR PLANNER</div>
+      <nav class="steps" aria-label="Planner steps">
+        <button class="step active" id="step-input" data-page="input"><span class="step-num">01</span><span><b>Set your week</b><small>Your time, your priorities</small></span></button>
+        <button class="step" id="step-plan" data-page="plan"><span class="step-num">02</span><span><b>Your timetable</b><small>A plan that fits real life</small></span></button>
+      </nav>
+      <div class="sidebar-note"><span class="note-icon">✳</span><div><b>Built around you</b><p>Every block has a reason. Change your mind anytime.</p></div></div>
+      <div class="side-foot"><span class="status-dot"></span> Everything stays on this device</div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar"><div class="breadcrumb">Planner <span>/</span> <b id="crumb-current">Set your week</b></div><div class="top-date" id="today-date"></div></header>
+
+      <section class="page active" id="input-page">
+        <div class="intro"><div class="eyebrow"><span class="eyebrow-line"></span> A LITTLE STRUCTURE, A LOT MORE ROOM</div><h1>Make space for<br><em>what matters.</em></h1><p>Tell us what your week looks like. We’ll find a rhythm that makes room for classes, deadlines, and you.</p></div>
+        <form id="planner-form">
+          <div class="form-section">
+            <div class="section-heading"><span class="section-index">01</span><div><h2>Start with the fixed things</h2><p>When and where you already need to be.</p></div></div>
+            <div class="form-card">
+              <div class="field-top"><label>College schedule</label><span class="field-hint">Add each class or commitment</span></div>
+              <div class="class-list" id="class-list"></div>
+              <button type="button" class="add-row" id="add-class"><span>＋</span> Add a class</button>
+            </div>
+          </div>
+          <div class="form-section">
+            <div class="section-heading"><span class="section-index">02</span><div><h2>Keep the deadlines in sight</h2><p>We’ll work backwards from the due date.</p></div></div>
+            <div class="form-card">
+              <div class="field-top"><label>Assignments</label><span class="field-hint">Break big tasks into manageable sessions</span></div>
+              <div class="assignment-list" id="assignment-list"></div>
+              <button type="button" class="add-row" id="add-assignment"><span>＋</span> Add an assignment</button>
+            </div>
+          </div>
+          <div class="form-section">
+            <div class="section-heading"><span class="section-index">03</span><div><h2>Make room for your routines</h2><p>Good weeks have more than just coursework in them.</p></div></div>
+            <div class="form-card routine-card">
+              <div class="routine-grid">
+                <label class="input-label">Sleep each night <span class="input-wrap"><input id="sleep-hours" type="number" min="5" max="12" value="8" step="0.5" required><span>hours</span></span></label>
+                <label class="input-label">Study time each day <span class="input-wrap"><input id="study-hours" type="number" min="1" max="10" value="3" step="0.5" required><span>hours</span></span></label>
+                <label class="input-label">Personal grooming <span class="input-wrap"><input id="groom-hours" type="number" min="0.25" max="3" value="1" step="0.25" required><span>hours / day</span></span></label>
+                <label class="input-label">Usual wake-up <span class="input-wrap"><input id="wake-time" type="time" value="07:00" required></span></label>
+              </div>
+              <div class="routine-foot"><span class="tiny-spark">✳</span> We’ll protect your sleep and personal time first.</div>
+            </div>
+          </div>
+          <div class="form-actions"><span class="form-disclaimer"><span class="status-dot"></span> Your details stay private on this device</span><button type="submit" class="primary-button">Build my week <span>↗</span></button></div>
+        </form>
+      </section>
+
+      <section class="page" id="plan-page">
+        <div class="plan-heading"><div><div class="eyebrow"><span class="eyebrow-line"></span> YOUR WEEK, FINDING ITS RHYTHM</div><h1>A week with <em>breathing room.</em></h1><p id="plan-subtitle">A thoughtful first draft, built around your real commitments.</p></div><button class="outline-button" id="edit-details">← Edit your details</button></div>
+        <div class="plan-layout"><div class="calendar-panel"><div class="calendar-toolbar"><div class="week-label"><span class="calendar-icon">▦</span><div><b id="week-title">Your week</b><small>Flexible weekly plan</small></div></div><div class="calendar-legend"><span><i class="legend-class"></i> Class</span><span><i class="legend-study"></i> Study</span><span><i class="legend-life"></i> Personal</span></div></div><div class="calendar-wrap"><div class="calendar-grid" id="calendar-grid"></div></div><div class="plan-foot"><span><i class="status-dot"></i> <b id="scheduled-count">0</b> blocks placed thoughtfully</span><span>Tap a block to see details</span></div></div>
+          <aside class="coach-panel"><div class="coach-top"><span class="coach-avatar">d<span>✳</span></span><div><b>Daymark helper</b><small><i class="status-dot"></i> Here to make it fit</small></div><button class="more-button" aria-label="More options">···</button></div><div class="coach-body"><div class="coach-welcome"><span class="welcome-spark">✳</span><h3>A good plan can flex.</h3><p>Ask me to move something, make more room, or rethink your week.</p></div><div class="suggestion-label">TRY ASKING</div><div class="suggestions"><button class="suggestion">Move study to the morning <span>↗</span></button><button class="suggestion">I need more downtime <span>↗</span></button><button class="suggestion">Prioritize my next deadline <span>↗</span></button></div><div class="chat-log" id="chat-log" aria-live="polite"></div></div><form class="chat-compose" id="chat-form"><input id="chat-input" placeholder="Tell me what to change…" aria-label="Tell Daymark what to change"><button aria-label="Send message">↑</button></form><div class="chat-caption">Simple instructions work best</div></aside></div>
+      </section>
+      <footer class="main-footer"><span>Small steps make good weeks.</span><span>DAYMARK <span class="footer-mark">✳</span> PERSONAL PLANNING</span></footer>
+    </main>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+  <div class="modal-backdrop" id="detail-modal"><div class="detail-modal"><button class="modal-close" id="modal-close" aria-label="Close">×</button><span class="modal-kicker">TIME BLOCK</span><h3 id="modal-title"></h3><p id="modal-description"></p><button class="delete-block" id="delete-block">Remove this block</button></div></div>
+  <script src="app.js"></script>
+</body>
+</html>
